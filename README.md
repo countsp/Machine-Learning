@@ -33,3 +33,6 @@ Oerfitting
 
 3.（根据先验）限制训练模型，原模型可能太复杂了
 
+![Screenshot from 2025-02-21 10-35-38](https://github.com/user-attachments/assets/c436978c-4335-443f-b96e-7355f9a7ad0e)
+
+![Screenshot from 2025-02-21 10-38-03](https://github.com/user-attachments/assets/45e3c7fd-d1d0-44a8-a67e-d7db320154bb)
