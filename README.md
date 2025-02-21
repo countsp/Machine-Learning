@@ -38,3 +38,7 @@ Oerfitting
 ![Screenshot from 2025-02-21 10-38-03](https://github.com/user-attachments/assets/45e3c7fd-d1d0-44a8-a67e-d7db320154bb)
 
 ![Screenshot from 2025-02-21 10-56-25](https://github.com/user-attachments/assets/5c808f7e-7344-4766-bbe9-12041616cdcb)
+
+4.mismatch
+
+训练集和验证集分布不统一：训练用去年数据、推理用当下数据
