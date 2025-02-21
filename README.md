@@ -45,7 +45,10 @@ Oerfitting
 
 # 避免critical point (局部最优解、鞍点)
 
-计算heissian 矩阵
+判断是local minimal 或者 saddle point : 计算heissian 矩阵
 
 ![Screenshot from 2025-02-21 11-10-24](https://github.com/user-attachments/assets/fdacdf1f-232d-4e1d-80da-7fdcfcbe8889)
 
+输出 矩阵后 计算eigen value
+
+![Screenshot from 2025-02-21 11-13-48](https://github.com/user-attachments/assets/60a47787-4559-42de-a12c-20e981bba60e)
