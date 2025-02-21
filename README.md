@@ -49,6 +49,6 @@ Oerfitting
 
 ![Screenshot from 2025-02-21 11-10-24](https://github.com/user-attachments/assets/fdacdf1f-232d-4e1d-80da-7fdcfcbe8889)
 
-输出 矩阵后 计算eigen value
+输出 矩阵后 计算eigen value ，取出eigen Value 的 一个eigenvector
 
 ![Screenshot from 2025-02-21 11-13-48](https://github.com/user-attachments/assets/60a47787-4559-42de-a12c-20e981bba60e)
