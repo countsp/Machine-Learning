@@ -53,6 +53,9 @@ Oerfitting
 
 ![Screenshot from 2025-02-21 11-13-48](https://github.com/user-attachments/assets/60a47787-4559-42de-a12c-20e981bba60e)
 
+# 使用momentum 避免进入critical point (类似势能)
+
+![Screenshot from 2025-02-21 17-22-24](https://github.com/user-attachments/assets/e3f2b37c-c45f-4c1f-8223-de64817aca5c)
 
 # 大的batch和小的batch对比
 
