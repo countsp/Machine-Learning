@@ -56,4 +56,5 @@ Oerfitting
 
 # 大的batch和小的batch对比
 
-![Uploading Screenshot from 2025-02-21 17-13-57.png…]()
+![Screenshot from 2025-02-21 17-15-36](https://github.com/user-attachments/assets/380fd754-9b87-4075-bb98-7284db3f7ae3)
+
