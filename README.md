@@ -42,3 +42,10 @@ Oerfitting
 4.mismatch
 
 训练集和验证集分布不统一：训练用去年数据、推理用当下数据
+
+# 避免critical point (局部最优解、鞍点)
+
+计算heissian 矩阵
+
+![Screenshot from 2025-02-21 11-10-24](https://github.com/user-attachments/assets/fdacdf1f-232d-4e1d-80da-7fdcfcbe8889)
+
