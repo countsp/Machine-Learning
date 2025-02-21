@@ -52,3 +52,8 @@ Oerfitting
 输出 矩阵后 计算eigen value ，取出eigen Value 的 一个eigenvector
 
 ![Screenshot from 2025-02-21 11-13-48](https://github.com/user-attachments/assets/60a47787-4559-42de-a12c-20e981bba60e)
+
+
+# 大的batch和小的batch对比
+
+![Uploading Screenshot from 2025-02-21 17-13-57.png…]()
