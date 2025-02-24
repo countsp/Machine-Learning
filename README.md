@@ -95,3 +95,8 @@ Resnet和Transformer都用了warm up 学习率策略
 # 优化总结
 
 ![Screenshot from 2025-02-24 09-26-27](https://github.com/user-attachments/assets/5c0bf677-526e-4205-8f61-2ab88719707a)
+
+# softmax
+
+1.归一化
+2.区分度提高（大的更大，小的更小）
