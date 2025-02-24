@@ -91,3 +91,7 @@ Adam就是用了RMSProp + Momentum
 ![Screenshot from 2025-02-24 09-22-21](https://github.com/user-attachments/assets/98bccde7-1225-4f5d-b5f2-6926ae78a45c)
 
 Resnet和Transformer都用了warm up 学习率策略
+
+# 优化总结
+
+![Screenshot from 2025-02-24 09-26-27](https://github.com/user-attachments/assets/5c0bf677-526e-4205-8f61-2ab88719707a)
