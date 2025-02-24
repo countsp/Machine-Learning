@@ -64,3 +64,22 @@ Oerfitting
 
 ![Screenshot from 2025-02-21 17-15-36](https://github.com/user-attachments/assets/380fd754-9b87-4075-bb98-7284db3f7ae3)
 
+# 梯度下降
+梯度下降的每个参数学习率应该不同，否则会有这种情况：
+
+![Screenshot from 2025-02-24 08-50-28](https://github.com/user-attachments/assets/dcd0c52f-272f-4862-a882-5aa09aa8c3db)
+
+针对每个参数定制学习率
+
+![Screenshot from 2025-02-24 08-50-43](https://github.com/user-attachments/assets/80d87407-40f5-477b-9f55-37f5597d3e8b)
+
+可以用RMS修改学习率
+
+![Screenshot from 2025-02-24 08-52-18](https://github.com/user-attachments/assets/d7c48f78-047d-4f44-b527-e02df6252208)
+
+RMSProp方法
+
+![Screenshot from 2025-02-24 08-57-32](https://github.com/user-attachments/assets/630cdad3-2a55-4735-b4e5-af8a435734e2)
+
+Adam就是用了RMSProp + Momentum
+![Screenshot from 2025-02-24 08-57-03](https://github.com/user-attachments/assets/a5bcc695-44fc-48cd-876d-708a0d215a29)
