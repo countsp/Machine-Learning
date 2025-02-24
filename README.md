@@ -99,4 +99,7 @@ Resnet和Transformer都用了warm up 学习率策略
 # softmax
 
 1.归一化
+
 2.区分度提高（大的更大，小的更小）
+
+3.和sigmoid是一样的
