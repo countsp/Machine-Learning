@@ -83,3 +83,11 @@ RMSProp方法
 
 Adam就是用了RMSProp + Momentum
 ![Screenshot from 2025-02-24 08-57-03](https://github.com/user-attachments/assets/a5bcc695-44fc-48cd-876d-708a0d215a29)
+
+# 学习率
+
+学习率的改变影响训练效果
+
+![Screenshot from 2025-02-24 09-22-21](https://github.com/user-attachments/assets/98bccde7-1225-4f5d-b5f2-6926ae78a45c)
+
+Resnet和Transformer都用了warm up 学习率策略
