@@ -57,6 +57,9 @@ Oerfitting
 
 ![Screenshot from 2025-02-21 17-22-24](https://github.com/user-attachments/assets/e3f2b37c-c45f-4c1f-8223-de64817aca5c)
 
+
+![Screenshot from 2025-02-21 17-25-42](https://github.com/user-attachments/assets/c6f5108a-ef00-424d-b7f4-fa06109b86ef)
+
 # 大的batch和小的batch对比
 
 ![Screenshot from 2025-02-21 17-15-36](https://github.com/user-attachments/assets/380fd754-9b87-4075-bb98-7284db3f7ae3)
