@@ -103,3 +103,7 @@ Resnet和Transformer都用了warm up 学习率策略
 2.区分度提高（大的更大，小的更小）
 
 3.和sigmoid是一样的
+
+# loss
+
+![Screenshot from 2025-02-24 09-53-56](https://github.com/user-attachments/assets/3c993bcf-32cc-4e5a-ac70-253beb87a24a)
