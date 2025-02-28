@@ -107,3 +107,13 @@ Resnet和Transformer都用了warm up 学习率策略
 # loss
 
 ![Screenshot from 2025-02-24 09-53-56](https://github.com/user-attachments/assets/3c993bcf-32cc-4e5a-ac70-253beb87a24a)
+
+# overfitting
+待选择模型太多了，参数量太大了
+
+# why deeper not fatter
+
+![Screenshot from 2025-02-28 08-54-01](https://github.com/user-attachments/assets/bd6df288-bd22-4212-a408-4c8666fbabb7)
+
+层数多，效率高
+![Screenshot from 2025-02-28 08-56-07](https://github.com/user-attachments/assets/938f958f-3c66-4b14-b732-1d22bec1798d)
