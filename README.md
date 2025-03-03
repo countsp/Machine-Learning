@@ -117,3 +117,10 @@ Resnet和Transformer都用了warm up 学习率策略
 
 层数多，效率高
 ![Screenshot from 2025-02-28 08-56-07](https://github.com/user-attachments/assets/938f958f-3c66-4b14-b732-1d22bec1798d)
+
+
+# GAN
+同一个输入，输出不同，需要用到GAN 网络。
+
+![Screenshot from 2025-03-03 08-51-19](https://github.com/user-attachments/assets/431ec87c-41c8-45ce-bcd0-ef16b2bbd8c3)
+
