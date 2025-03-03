@@ -124,3 +124,8 @@ Resnet和Transformer都用了warm up 学习率策略
 
 ![Screenshot from 2025-03-03 08-51-19](https://github.com/user-attachments/assets/431ec87c-41c8-45ce-bcd0-ef16b2bbd8c3)
 
+需要训练一个discriminator, 对抗generator。
+
+![Screenshot from 2025-03-03 08-53-10](https://github.com/user-attachments/assets/7f87da9b-7281-4bd5-90f5-f402121c2937)
+
+![Screenshot from 2025-03-03 09-05-36](https://github.com/user-attachments/assets/231ea0ff-1194-429a-bc5e-ba3a24b97fa0)
