@@ -159,3 +159,11 @@ Self-Attention 相当于 cnn 进阶，它的receptive field 不知周边 pixel�
 RNN 考虑不到 后续input vector的内容。使用双向RNN可以，但是最左侧输出要考虑最右侧（最远端）内容，需要一路承载信息。
 
 ![Screenshot from 2025-03-07 14-09-58](https://github.com/user-attachments/assets/0f1b96f8-fbb8-4271-82a1-6955e2e490c8)
+
+而且RNN不是并行的，需要一路推理。
+
+# Batch Normalization
+
+愚公移山式优化误差平面
+
+![Screenshot from 2025-03-07 14-26-51](https://github.com/user-attachments/assets/51950534-47fb-4bda-99ca-254bbace7236)
