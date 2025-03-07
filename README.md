@@ -167,3 +167,10 @@ RNN 考虑不到 后续input vector的内容。使用双向RNN可以，但是最
 愚公移山式优化误差平面
 
 ![Screenshot from 2025-03-07 14-26-51](https://github.com/user-attachments/assets/51950534-47fb-4bda-99ca-254bbace7236)
+
+对整个input的向量做normalization，参数变化会影响 u , sigma，不能将所有数据放入GPU中训练，所以对batch做normalization
+
+![Screenshot from 2025-03-07 14-38-26](https://github.com/user-attachments/assets/a97b308a-2317-47f7-9944-afd9deb1f60f)
+
+推理时，要实时对每一个input而不是batch做推理，这个u ,sigma从哪里来？ 在train时候 ， 估算了 u 和 sigma 的平均。
+![Screenshot from 2025-03-07 14-48-46](https://github.com/user-attachments/assets/57d31841-ee88-4e98-9568-f825dc78968e)
