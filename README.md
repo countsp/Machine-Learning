@@ -129,3 +129,10 @@ Resnet和Transformer都用了warm up 学习率策略
 ![Screenshot from 2025-03-03 08-53-10](https://github.com/user-attachments/assets/7f87da9b-7281-4bd5-90f5-f402121c2937)
 
 ![Screenshot from 2025-03-03 09-05-36](https://github.com/user-attachments/assets/231ea0ff-1194-429a-bc5e-ba3a24b97fa0)
+
+
+# Self-Attention
+
+![Screenshot from 2025-03-03 11-00-54](https://github.com/user-attachments/assets/7255b85e-cde4-4f2a-820a-ff8a886d820a)
+
+![Screenshot from 2025-03-03 11-03-25](https://github.com/user-attachments/assets/3171fb98-e43c-4d06-9bc4-e2a51e1c0e5c)
