@@ -145,3 +145,11 @@ Resnet和Transformer都用了warm up 学习率策略
 # Multihead-attention
 
 ![Screenshot from 2025-03-07 13-31-01](https://github.com/user-attachments/assets/6740b5c2-f7be-481e-b7d4-e34088e7e037)
+
+# Self-Attention vs CNN
+
+![Screenshot from 2025-03-07 14-02-46](https://github.com/user-attachments/assets/0969299b-d75d-4540-936e-aa1495316a31)
+
+cnn是简化的self-attention，它只关注周边 Pixel 作为 receptive field；
+
+Self-Attention 相当于 cnn 进阶，它的receptive field 不知周边 pixel，而是整张图。
