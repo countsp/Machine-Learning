@@ -176,3 +176,18 @@ RNN 考虑不到 后续input vector的内容。使用双向RNN可以，但是最
 推理时，要实时对每一个input而不是batch做推理，这个u ,sigma从哪里来？ 在train时候 ， 估算了 u 和 sigma 的平均。
 
 ![Screenshot from 2025-03-07 14-48-46](https://github.com/user-attachments/assets/57d31841-ee88-4e98-9568-f825dc78968e)
+
+
+# Transformer
+
+![Screenshot from 2025-03-10 10-27-57](https://github.com/user-attachments/assets/ce0cc1b2-ced3-4eb5-bacd-6d5749bad9c4)
+
+一个翻译器的训练阶段：数据集x为“machine learning”,y为”机器学习“。
+
+encoder通过self-attention和ffd直接输出一个vector seq为m1,然后m1和‘/begin’进入decoder'，推测第一个token。
+
+然后第一个token与“机”作交叉熵验证然后优化decoder
+
+然后m1和第一个token推测第二个token
+
+第二个token与“器”作交叉熵验证然后优化decode直到推到"/end"。
