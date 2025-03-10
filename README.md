@@ -24,9 +24,10 @@ $' θ=θ−α⋅∇J(θ) '$
 ∇J(θ) 表示损失函数 J(θ) 对参数 θ 的梯度
 
 
-训练效果差
+## 训练效果差
 
-Oerfitting
+**Overfitting**
+
 1.增加训练集
 
 2.data augmentation
