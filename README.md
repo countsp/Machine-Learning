@@ -28,11 +28,11 @@ $' θ=θ−α⋅∇J(θ) '$
 
 **Overfitting**
 
-1.增加训练集
+**1.增加训练集**
 
-2.data augmentation
+**2.data augmentation**
 
-3.（根据先验）限制训练模型，原模型可能太复杂了
+**3.（根据先验）限制训练模型，原模型可能太复杂了**
 
 ![Screenshot from 2025-02-21 10-35-38](https://github.com/user-attachments/assets/c436978c-4335-443f-b96e-7355f9a7ad0e)
 
@@ -40,7 +40,7 @@ $' θ=θ−α⋅∇J(θ) '$
 
 ![Screenshot from 2025-02-21 10-56-25](https://github.com/user-attachments/assets/5c808f7e-7344-4766-bbe9-12041616cdcb)
 
-4.mismatch
+**4.mismatch**
 
 训练集和验证集分布不统一：训练用去年数据、推理用当下数据
 
