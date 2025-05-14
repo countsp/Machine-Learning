@@ -150,7 +150,7 @@ Decoder outputs hs ➝ class_embed + bbox_embed
 
 ---
 
-## ✅ Step 1: 分类代价cost_class  `cost_class = 1 - p(GT类)`
+#### ✅ Step 1: 分类代价cost_class  `cost_class = 1 - p(GT类)`
 
 | 预测\GT | G0 (B类)       | G1 (A类)       |
 |---------|----------------|----------------|
@@ -164,7 +164,7 @@ cost_class = -out_prob[:, tgt_ids]
 
 ---
 
-## ✅ Step 2: 边界框 L1 距离代价cost_box（粗略估算）
+#### ✅ Step 2: 边界框 L1 距离代价cost_box（粗略估算）
 
 | 预测\GT | G0         | G1         |
 |---------|------------|------------|
@@ -180,7 +180,7 @@ cost_bbox = torch.cdist(out_bbox, tgt_bbox, p=1)
 
 ---
 
-## ✅ Step 3: GIoU 代价（负 GIoU）
+#### ✅ Step 3: GIoU 代价（负 GIoU）
 
 | 预测\GT | G0       | G1       |
 |---------|----------|----------|
@@ -198,7 +198,7 @@ cost_giou = -generalized_box_iou(
 
 ---
 
-## ✅ Step 4: 总匹配代价（加权求和，权重全为 1）
+#### ✅ Step 4: 总匹配代价（加权求和，权重全为 1）
 
 | 预测\GT | G0                    | G1                    |
 |---------|-----------------------|-----------------------|
@@ -211,7 +211,7 @@ C = self.cost_bbox * cost_bbox + self.cost_class * cost_class + self.cost_giou *
 ```
 ---
 
-## ✅ Step 5: 匈牙利匹配结果（最小代价分配）
+#### ✅ Step 5: 匈牙利匹配结果（最小代价分配）
 在一个 二维代价矩阵C 中，选出 一一对应的匹配（每行最多选一个列，每列最多选一个行），使得 总代价之和最小。
 
 例如
