@@ -7,9 +7,9 @@
 其核心思想是通过一个 Sigmoid 函数 将线性回归的结果映射到 [0, 1] 之间，以此实现分类任务。
 
 * **线性部分**：
-$'
+$
 z = w_0 + w_1 x_1 + w_2 x_2 + \cdots + w_n x_n = \mathbf{w}^T \mathbf{x}
-'$
+$
 **Sigmoid 映射：**
 $$
 \sigma(z) = \frac{1}{1 + e^{-z}}
