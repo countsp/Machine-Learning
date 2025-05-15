@@ -11,6 +11,7 @@
 $z = w_0 + w_1 x_1 + w_2 x_2 + \cdots + w_n x_n = \mathbf{w}^T \mathbf{x}$
 
 **Sigmoid 映射：**
+
 $\sigma(z) = \frac{1}{1 + e^{-z}}$
 
 **分类决策：**
