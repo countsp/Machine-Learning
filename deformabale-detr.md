@@ -65,18 +65,11 @@ nn.Linear(512, 2) + sigmoid
 
 **得到偏移点** Δp ∈ [8, 4, 2]
 
-使用另一个大的 FC 层（如 nn.Linear(512, 3×M×K×L)）来预测：
+使用另一个大的 FC 层（如 nn.Linear(512, 3×M×K×L)）来预测： M = 8（head 数）K = 4（一个head偏移K（4）次，得到4个） L = 1（特征图层数，Encoder 中一般设为 1）
 
 偏移 Δp（offsets）：[8, K, L, 2]
 
 权重 A（attention weights）：[8, K, L]
-
-
-M = 8（head 数）
-
-K = 4（一个head偏移K（4）次，得到4个）
-
-L = 1（特征图层数，Encoder 中一般设为 1）
 
 ```
 a = torch.tensor([
@@ -99,7 +92,7 @@ p sampled 再乘以特征图大小（如 32 × 32）得到像素坐标：
 img_coords = p_sampled * torch.tensor([W, H])  # shape: [8, 4, 2]
 ```
 
-
+**Q**
 ```
 features ∈ [8, 4, 256]   ← 每个 head 的每个点一个 256 维向量
 ```
@@ -143,14 +136,18 @@ output = [
 
 
 
+
+
+**例子**
+
 ```
-delta_p:
+Δp:
 tensor([[0.1000, 0.2000],
         [0.3000, 0.4000],
         [0.5000, 0.6000],
         [0.7000, 0.8000]])
 
-attn_weight:
+A:
 tensor([0.2408, 0.2663, 0.2170, 0.2759])  # softmax 后
 ```
 
