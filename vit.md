@@ -1,6 +1,6 @@
 # VIT
 
-![Screenshot from 2025-05-20 15-29-59](/home/office2004/Pictures/Screenshot from 2025-05-20 15-29-59.png)
+![Screenshot from 2025-05-20 15-29-59](https://github.com/user-attachments/assets/c1cb2896-509a-46c5-bdfe-2f62427d7ac9)
 
 在视觉任务中，注意力机制通常是与卷积网络结合使用，或者只替代卷积网络的某些组件，同时保留整体结构。我们证明了这种对 CNN 的依赖并非必要，**纯粹的 Transformer 直接应用于图像 patch 序列，同样可以在图像分类任务中取得出色表现**。
 
@@ -21,7 +21,7 @@
 
    - 加入位置编码（positional embedding）以保持空间信息。
 
-     x_p · E  +  E_pos
+     $x_p · E  +  E_pos$
 
 3. **Transformer 编码器**：
 
