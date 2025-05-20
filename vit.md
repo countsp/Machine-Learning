@@ -10,23 +10,21 @@
 
 1. **图像分割成 Patch**：
 
-   - 输入图像被划分为固定大小（如 16x16 像素）的 patch。
-   - 
-   - 每个 patch 被展平并线性映射为向量$x_p$，形成 patch embedding。
+   * 输入图像被划分为固定大小（如 16x16 像素）的 patch。
+
+   * 每个 patch 被展平并线性映射为向量 $x_p$ ，形成 patch embedding。
 
 2. **类比 NLP 的词向量处理**：
 
-   - 每个 patch 作为一个“词”，整个图像变成一个 patch 序列。 $x_p$
-
-   - 加上一个 learnable 的 [class] token，用于图像分类。
+   * $x_p$加上一个 learnable 的 [class] token，用于图像分类。
   
-   - 乘以可学习的权重W
+   * 乘以可学习的权重W
 
-   - 加入位置编码（positional embedding）以保持空间信息。
+   * 加入位置编码（positional embedding）以保持空间信息。
 
-     $x_p · W  +  E_pos$
+     $Image Feature = x_p · W  +  E_{pos}$
 
 3. **Transformer 编码器**：
 
-   - 输入 patch 序列进入标准的 Transformer 编码器（多头自注意力 + MLP 块，带有残差连接和 LayerNorm）。
-   - 输出中 [class] token 的表示被用于最终分类。
+   * 输入 patch 序列进入标准的 Transformer 编码器（多头自注意力 + MLP 块，带有残差连接和 LayerNorm）。
+   * 输出中 [class] token 的表示被用于最终分类。
