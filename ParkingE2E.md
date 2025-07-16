@@ -240,10 +240,6 @@ bev_target_encoder = self.target_res_encoder(bev_target, flatten=False)
 
 - `num_layers=self.cfg.query_en_layers`，就重复上面的流程若干次，让融合更深、更灵活。
 
-
-
-
-
 tgt_feature.shape = (B, C, H, W)
 
 ​					|
@@ -471,6 +467,35 @@ class ParkingModelReal(nn.Module):
 效果：有助于网络学到更精细的侧向定位
 
 
+## lss对比 BEVformer
+1. 流程
+LSS（Lift‑Splat‑Shoot）
+   Backbone：对每路相机图像提取 2D 特征图。
+   Depth Head：在特征图上预测每像素的深度分布 P(x,y,d)。
+   Lift：根据相机内外参，将每个像素“抬”到多个深度平面上的 3D frustum。
+   Splat：按深度概率加权，将 frustum 特征投影（rasterize）到统一 BEV 网格，得到 BEV 特征图。
+   Shoot / Head：在 BEV 特征上接检测／分割／规划任务头。 
+   
+BEVFormer
+   Backbone：同样对多路相机共享提取 2D 特征。
+   View‑to‑BEV Cross‑Attention：定义一组可学习的 BEV queries，在每一帧上通过跨视角的空间注意力，从所有相机特征中抽取对应 BEV cell 的信息。
+   Temporal Self‑Attention：将当前 BEV queries 的输出与历史多帧的 BEV 表征做自注意力融合，捕捉动态场景信息。
+   任务头：在最终 BEV 表征上做检测／分割等任务。
+
+2. 深度依赖 vs 隐式几何
+
+LSS 依赖显式的深度估计：
+Depth Head 提供像素→空间的几何映射信号，保证投影的可微性与准确性；
+但需要额外深度监督或伪深度标签。 
+
+BEVFormer 不做显式深度预测：
+通过 Attention 学习像素→BEV 的隐式几何关系；
+对几何变换的学习负担更重，需要更多数据和训练技巧来恢复深度信息。 
+
+3.
+LSS 本身是单帧投影，若要加时序，需要在 BEV 特征后额外拼接历史帧并做 3D 卷积或再插入 Transformer 模块。
+BEVFormer 天然支持时序：内置 Temporal Self‑Attention，让每个 BEV query 在时序维度上与过去多帧互通，能够直接建模运动趋势与动态障碍物。
+
 
 ## 为什么用CE？
 
@@ -489,3 +514,8 @@ l2 distance
 
 hausdorff distance
 
+查看lss的网格size
+
+transformer
+
+rl
