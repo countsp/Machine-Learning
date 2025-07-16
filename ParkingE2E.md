@@ -508,16 +508,22 @@ BEVFormer 天然支持时序：内置 Temporal Self‑Attention，让每个 BEV 
 3. 回归 L₂ Loss 对于尺度、单位非常敏感，需要精心调整网络的输出范围、学习率；CE Loss 做分类，logits → softmax → log 概率，一般更容易收敛。
 4. BEV 空间量化成固定网格，token 本身就代表某个格子索引；直接回归到连续坐标就绕过了网格结构，不容易对齐 BEV 特征和模型的输出。
 
-CE LOSS？
 
-l2 distance
+
+# l2 distance 与 hausdorff distance
 
 hausdorff distance
+即对 点集 A中每个点  a 找到离它最近的 B 中点，取所有这些最小距离的上确界。
+这两种距离在点到点和点集对点集的度量中都有广泛应用：L₂ 用于个体相似度衡量，Hausdorff 则用于整体形状或轨迹的最差匹配误差评估。
+
+
 
 查看lss的网格size
+target图生成几次？
 
 transformer
 
 rl
 
-target图生成几次？
+
+
