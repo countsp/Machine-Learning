@@ -165,6 +165,8 @@ self.frustum = self.create_frustum() # 创建视锥体
 
 self.cam_encoder = CamEncoder(self.cfg, self.depth_channel)  #裁减EfficientNetB0
 
+
+
 # Encoder
 
 ## Image Encoder
@@ -265,6 +267,7 @@ self.tf_query(tgt_feature, memory=img_feature)   让 `target BEV` 对 `camera BE
 (B, HW, C) → permute → reshape → (B, C, H, W)
 
 
+### 双线性插值
 
 ### Trajectory Decoder
 
