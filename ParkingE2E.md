@@ -511,14 +511,20 @@ BEVFormer 天然支持时序：内置 Temporal Self‑Attention，让每个 BEV 
 
 
 # l2 distance 与 hausdorff distance
+**l2 distance**
 
-hausdorff distance
+欧式距离
+
+**hausdorff distance**
+
 即对 点集 A中每个点  a 找到离它最近的 B 中点，取所有这些最小距离的上确界。
-这两种距离在点到点和点集对点集的度量中都有广泛应用：L₂ 用于个体相似度衡量，Hausdorff 则用于整体形状或轨迹的最差匹配误差评估。
+
+**这两种距离在点到点和点集对点集的度量中都有广泛应用：L₂ 用于个体相似度衡量，Hausdorff 则用于整体形状或轨迹的最差匹配误差评估。**
 
 
 
 查看lss的网格size
+
 target图生成几次？
 
 transformer
