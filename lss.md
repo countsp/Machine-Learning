@@ -49,7 +49,7 @@
 
    - 计算每个轨迹 τᵢ 在 BEV 成本图中的代价：
 
-     p(τi∣o)=exp⁡(−∑(x,y)∈τico(x,y))∑τ∈Texp⁡(−∑(x,y)∈τco(x,y))p(τ_i | o) = \frac{\exp(-\sum_{(x,y) ∈ τ_i} c_o(x,y))}{\sum_{\tau ∈ T} \exp(-\sum_{(x,y) ∈ τ} c_o(x,y))}p(τi∣o)=∑τ∈Texp(−∑(x,y)∈τco(x,y))exp(−∑(x,y)∈τico(x,y))
+     $' p(τi∣o)=exp⁡(−∑(x,y)∈τico(x,y))∑τ∈Texp⁡(−∑(x,y)∈τco(x,y))p(τ_i | o) = \frac{\exp(-\sum_{(x,y) ∈ τ_i} c_o(x,y))}{\sum_{\tau ∈ T} \exp(-\sum_{(x,y) ∈ τ} c_o(x,y))}p(τi∣o)=∑τ∈Texp(−∑(x,y)∈τco(x,y))exp(−∑(x,y)∈τico(x,y)) '$
 
    - 将规划任务转化为一个 K 类分类问题（选择最佳轨迹模板）。
 

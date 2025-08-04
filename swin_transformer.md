@@ -2,15 +2,27 @@
 
 **本文提出了一种采用层次化结构的Transformer，并使用移动窗口（Shifted Windows）来计算特征表示。移动窗口机制仅在不重叠的局部窗口内进行自注意力计算，提升了计算效率，同时又保留了跨窗口的信息交互能力。该架构不仅能够灵活建模不同尺度的信息，而且其计算复杂度相对于图像大小是线性的。**
 
+![Screenshot from 2025-07-17 11-02-05](/home/office2004/Pictures/Screenshot from 2025-07-17 11-02-05.png)
+
+### Patch Partition 
+
+- 将输入图像切成固定大小 patch（4×4）
+- 每个 patch 展平后输入线性层（维度 3->48）
+- 得到 `[H/4, W/4, C]` 的特征图，相当于初步下采样
 
 
-###  Patch partition
 
-```
-x_windows = window_partition(shifted_x, self.window_size)  # nW*B, window_size, window_size, C
-```
+### Linear Embedding
+
+nn.Linear(48, C)
 
 ### Patch Merging
+
+类似 CNN 的 pooling：
+
+- 每 2×2 相邻 patch 合并
+- 通道数 ×2，空间尺寸 /2
+- 实现多尺度建模能力
 
 ```
 x = x.view(B, H, W, C)
