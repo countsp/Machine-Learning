@@ -233,9 +233,78 @@ C =
 row_idx, col_idx = linear_sum_assignment(C)
 ```
 ### 输出
-```
 序固定就意味着模型假设“GT1 永远是某个位置/类别的物体”，这对真实数据不成立（目标的顺序会变、目标数会变、类别会变）。
 
 如果强行排序，反而可能导致模型过拟合到排序规则，而不是学会泛化地检测目标。row_ind = [0, 1, 2]
 col_ind = [1, 0, 2]
+
+## Step 1：Flatten BEV 特征图 + 自注意力建模
+```
+import torch
+import torch.nn as nn
+
+# 假设输入的 BEV 特征图
+C, H, W = 256, 200, 200
+bev_feature = torch.randn(C, H, W)  # [C, H, W]
+
+# 转为 [H*W, C]，供 transformer encoder 使用
+bev_feature_flat = bev_feature.permute(1, 2, 0).reshape(-1, C)  # [H*W, C]
+
+# 加上 batch dim: [1, H*W, C]
+bev_feature_seq = bev_feature_flat.unsqueeze(0)
+
+# 定义 Transformer Encoder
+transformer_encoder = nn.TransformerEncoder(
+    encoder_layer=nn.TransformerEncoderLayer(
+        d_model=C,
+        nhead=8,
+        dim_feedforward=512,
+        dropout=0.1,
+        batch_first=True
+    ),
+    num_layers=6
+)
+
+# 输出 Encoder 后的全局建模特征：[1, H*W, C]
+encoder_output = transformer_encoder(bev_feature_seq)
+```
+
+## ✅ Step 2：用 DETR 的 Object Queries 做 Cross Attention
+
+```
+# Learnable object queries：[N_query, C]
+N_query = 100
+object_queries = nn.Parameter(torch.randn(N_query, C))  # 需要注册到模型中才能训练
+
+# 加上 batch dim: [1, N_query, C]
+object_queries = object_queries.unsqueeze(0)
+
+# 定义 Transformer Decoder
+transformer_decoder = nn.TransformerDecoder(
+    decoder_layer=nn.TransformerDecoderLayer(
+        d_model=C,
+        nhead=8,
+        dim_feedforward=512,
+        dropout=0.1,
+        batch_first=True
+    ),
+    num_layers=6
+)
+
+# Decoder：Cross Attention(Q=query, K=V=encoder_output)
+decoder_output = transformer_decoder(object_queries, encoder_output)
+# shape: [1, N_query, C]
+‵‵‵
+## ✅ 输出分类和边界框回归（DETR-style）
+
+‵‵‵
+# 分类头
+class_head = nn.Linear(C, 10)  # 10类目标
+
+# 边界框回归头（这里假设输出 [cx, cy, w, h]）
+bbox_head = nn.Linear(C, 4)
+
+# 输出
+class_logits = class_head(decoder_output)  # [1, 100, 10]
+bboxes = bbox_head(decoder_output).sigmoid()  # [1, 100, 4] (归一化坐标)
 ```
