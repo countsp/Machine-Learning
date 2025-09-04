@@ -19,9 +19,6 @@
 ![regular conv](https://i-blog.csdnimg.cn/blog_migrate/b418b74103a4aa4e63b741c4b9f016b3.png)
 
 
-
-![Screenshot from 2025-06-20 15-44-21](/home/office2004/Pictures/Screenshot from 2025-06-20 15-44-21.png)
-
 **Entry Flow**
 
 - 以一个常规的 3×3 卷积开始，用于对输入图像（通常 299×299×3)做初步特征提取；
