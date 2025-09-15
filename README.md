@@ -241,6 +241,9 @@ RNN 考虑不到 后续input vector的内容。使用双向RNN可以，但是最
 
 ![Screenshot from 2025-03-07 14-48-46](https://github.com/user-attachments/assets/57d31841-ee88-4e98-9568-f825dc78968e)
 
+$$
+running_mean_t​=(1−m)⋅running_mean_(t−1​)+m⋅μbatch​
+$$
 
 # Transformer
 
