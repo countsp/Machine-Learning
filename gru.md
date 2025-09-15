@@ -1,5 +1,7 @@
 # GRU
 
+在时间序列数据中提取特征，同时把“过去的信息”编码进当前特征里。
+
 ## GRU 的核心结构
 
 ![../_images/gru-3.svg](https://zh.d2l.ai/_images/gru-3.svg)
@@ -26,17 +28,16 @@ GRU 主要包含两个“门”：
 
 3. 得到候选隐藏状态  h~t：
    $$
-   \tilde{h}_t = \tanh(W_h x_t + U_h(r_t \odot h_{t-1}))
+   \tilde{H}_t = \tanh(W_h x_t + U_h(r_t \odot h_{t-1}))
    $$
    
-
 4. 最终隐藏状态更新：
    $$
-   h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h}_t
+   H_t = z_t\odot H_{t-1} + (1 - z_t) \odot \tilde{H}_t
    $$
    
 
-这里的 σ 是 Sigmoid 函数，⊙ 是逐元素相乘。
+**这里的 σ 是 Sigmoid 函数，⊙ 是逐元素相乘。**
 
 ```
 import torch, torch.nn as nn
@@ -72,3 +73,4 @@ def gru(inputs, state, params):
 
 
 
+[dive into deeplearning](https://zh.d2l.ai/chapter_recurrent-modern/gru.html)
