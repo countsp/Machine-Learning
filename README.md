@@ -21,6 +21,9 @@ $\sigma(z) = \frac{1}{1 + e^{-z}}$
 若 $\sigma(z) > 0.5$，预测为 正类 (1)
 
 若 $\sigma(z) \leq 0.5$，预测为 负类 (0)
+
+---
+
 # 梯度下降
 
 梯度下降法（Gradient Descent）是一种常用于优化机器学习模型参数的算法，主要用于最小化损失函数。其核心思想是通过迭代更新参数，使损失函数逐渐减小，直到达到局部最小值（对于凸函数则是全局最小值）。
@@ -38,8 +41,16 @@ $' θ=θ−α⋅∇J(θ) '$
 α 表示学习率，控制每次迭代参数更新的步长。
 ∇J(θ) 表示损失函数 J(θ) 对参数 θ 的梯度
 
+**放大梯度避免下溢**
+
+在 混合精度训练 (FP16) 中，梯度常常特别小，会被当成 0（下溢）。
+
+于是我们引入 loss scaling：把 loss 乘一个很大的数，这样反向传播时梯度也被放大，避免被截断成 0。最后再缩回来。
+
 <img width="624" height="822" alt="Screenshot from 2025-09-16 13-19-48" src="https://github.com/user-attachments/assets/a0fadae7-d4c5-4b32-991c-41725067b571" />
 <img width="632" height="751" alt="Screenshot from 2025-09-16 13-19-56" src="https://github.com/user-attachments/assets/0bad2165-1415-451e-8e5e-d4a6263979dc" />
+
+---
 
 ## 训练效果差
 
