@@ -1,3 +1,12 @@
+# 训练流程
+
+1. 准备 DataLoader
+2. 构建优化器
+3. 构建 Runner（loss）
+4. 注册 Hook
+5. 加载预训练权重或恢复训练
+
+
 # 逻辑回归（Logistic Regression）
 
 是一种广泛用于二分类问题的统计方法。
