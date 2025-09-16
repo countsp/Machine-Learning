@@ -38,6 +38,8 @@ $' θ=θ−α⋅∇J(θ) '$
 α 表示学习率，控制每次迭代参数更新的步长。
 ∇J(θ) 表示损失函数 J(θ) 对参数 θ 的梯度
 
+<img width="624" height="822" alt="Screenshot from 2025-09-16 13-19-48" src="https://github.com/user-attachments/assets/a0fadae7-d4c5-4b32-991c-41725067b571" />
+<img width="632" height="751" alt="Screenshot from 2025-09-16 13-19-56" src="https://github.com/user-attachments/assets/0bad2165-1415-451e-8e5e-d4a6263979dc" />
 
 ## 训练效果差
 
