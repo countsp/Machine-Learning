@@ -183,6 +183,9 @@ Resnet和Transformer都用了warm up 学习率策略
 
 ![Screenshot from 2025-02-24 09-26-27](https://github.com/user-attachments/assets/5c0bf677-526e-4205-8f61-2ab88719707a)
 
+---
+
+# 分类
 # softmax
 
 1.归一化
@@ -280,3 +283,11 @@ encoder通过self-attention和ffd直接输出一个vector seq为m1,然后m1和�
 然后m1和第一个token推测第二个token
 
 第二个token与“器”作交叉熵验证然后优化decode直到推到"/end"。
+
+
+# Loss
+分类 loss（交叉熵/Focal Loss）+ 回归 loss（L1/SmoothL1/GIoU/LossNormReg 等）。
+
+### 检测BBOX的loss：bag-level
+<img width="718" height="770" alt="Screenshot from 2025-09-18 14-04-46" src="https://github.com/user-attachments/assets/cb9397a0-4a59-40c5-b3a0-a2bff8dab008" />
+<img width="630" height="861" alt="Screenshot from 2025-09-18 14-45-30" src="https://github.com/user-attachments/assets/29f31940-322e-4e3d-b041-d3b7b4647912" />
