@@ -304,3 +304,4 @@ encoder通过self-attention和ffd直接输出一个vector seq为m1,然后m1和�
 ### 检测BBOX的loss：bag-level
 <img width="718" height="770" alt="Screenshot from 2025-09-18 14-04-46" src="https://github.com/user-attachments/assets/cb9397a0-4a59-40c5-b3a0-a2bff8dab008" />
 <img width="630" height="861" alt="Screenshot from 2025-09-18 14-45-30" src="https://github.com/user-attachments/assets/29f31940-322e-4e3d-b041-d3b7b4647912" />
+
