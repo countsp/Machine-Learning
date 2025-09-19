@@ -164,4 +164,4 @@ cls_scores: [B, 200\*200\*8, num_classes]
 
 bbox_preds: [B, 200\*200\*8, 9] (Δx, Δy, Δz, Δw, Δl, Δh, Δyaw, Δvx, Δvy)
 
-dir_cls_preds: [B, 200\*200\*8, 2]
+dir_cls_preds: [B, 200\*200\*8, 2] 方向
