@@ -165,3 +165,102 @@ cls_scores: [B, 200\*200\*8, num_classes]
 bbox_preds: [B, 200\*200\*8, 9] (Δx, Δy, Δz, Δw, Δl, Δh, Δyaw, Δvx, Δvy)
 
 dir_cls_preds: [B, 200\*200\*8, 2] 方向
+
+
+# bbox loss
+bbox_preds: [B, 200\*200\*8, 9] 与 gt 做 **SmoothL1Loss**
+
+```
+pred = (x=1.2, y=0.5, z=0.0, w=2.0, l=4.0, h=1.5, θ=0.1, vx=0.0, vy=0.0)
+gt =   (x=1.0, y=0.6, z=0.0, w=2.2, l=3.8, h=1.6, θ=0.2, vx=0.0, vy=0.0)
+Δ = pred - gt = (0.2, -0.1, 0.0, -0.2, 0.2, -0.1, -0.1, 0.0, 0.0)
+
+L_smooth = Σ_i SmoothL1(Δ_i)
+≈ |0.2| + |−0.1| + |0| + |−0.2| + |0.2| + |−0.1| + |−0.1| + 0 + 0
+≈ 0.9
+```
+
+做完转概率形式：
+```
+matched_box_prob = torch.exp(-loss_bbox)
+```
+输出 
+
+```
+exp(-0.9) ≈ 0.41
+```
+**3. 与分类概率融合**
+```
+matched_cls_prob = 0.8   # anchor 被预测成“汽车”的概率
+```
+
+融合：
+
+```
+matched_prob = matched_cls_prob * matched_box_prob
+             = 0.8 * 0.41
+             ≈ 0.33
+```
+**4. positive_bag_prob**
+<img width="315" height="98" alt="Screenshot from 2025-09-19 16-02-49" src="https://github.com/user-attachments/assets/6aa55e96-7249-4360-8ce2-635da99f601a" />
+
+
+```
+# matched_cls_prob: top-k anchors 的分类概率
+# matched_box_prob: top-k anchors 的定位概率
+matched_prob = matched_cls_prob * matched_box_prob
+
+# 权重归一化
+weight = 1 / torch.clamp(1 - matched_prob, 1e-12, None)
+weight /= weight.sum(dim=1).unsqueeze(dim=-1)
+
+# bag_prob = top-k anchor 概率的加权和
+bag_prob = (weight * matched_prob).sum(dim=1)
+bag_prob = bag_prob.clamp(0, 1)
+
+# BCE(bag_prob, 1)
+return self.alpha * F.binary_cross_entropy(
+    bag_prob, torch.ones_like(bag_prob), reduction='none')
+```
+
+
+**5. negative_bag_prob**
+
+假设：
+
+分类概率 cls_prob = [0.9, 0.6, 0.2, 0.1]   # 每个anchor属于“车”的概率
+
+匹配概率 box_prob = [0.95, 0.2, 0.0, 0.0]
+
+```
+prob = cls_prob * (1 - box_prob)
+```
+prob = [0.9*(1-0.95), 0.6*(1-0.2), 0.2*(1-0.0), 0.1*(1-0.0)]
+     = [0.045,         0.48,        0.2,         0.1]
+
+如果 anchor 和 GT 高度重合（box_prob≈1），则 (1-box_prob)≈0，prob≈0 → 减弱这个 anchor 的负样本权重。
+
+(2) BCE 损失：- [y*log(p) + (1-y)*log(1-p)]
+
+这里负样本的标签全是 0，所以公式退化为：
+
+$$
+BCE(𝑝,0)=−log(1−𝑝)
+$$
+```
+BCE = [-log(1-0.045), -log(1-0.48), -log(1-0.2), -log(1-0.1)]
+    ≈ [0.046,         0.653,        0.223,       0.105]
+```
+(3) 加 focal loss 权重：
+
+$$
+FL(𝑝)=(𝑝𝑟𝑜𝑏^𝛾)∗BCE
+$$
+```
+FL = [0.045^2*0.046, 0.48^2*0.653, 0.2^2*0.223, 0.1^2*0.105]
+   ≈ [0.00009,       0.151,        0.009,       0.001]
+```
+
+最后乘上 (1-alpha) = 0.75
+
+loss = [0.00007, 0.113, 0.007, 0.001]
