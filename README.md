@@ -286,7 +286,7 @@ encoder通过self-attention和ffd直接输出一个vector seq为m1,然后m1和�
 
 
 # Loss
-分类 loss（交叉熵/Focal Loss）+ 回归 loss（L1/SmoothL1/GIoU/LossNormReg 等）。
+分类 loss（交叉熵/Focal Loss）+ 回归 loss（L1/SmoothL1/GIoU/LossNormReg 等）。 Focal loss?
 
 ## 交叉熵
 <img width="794" height="748" alt="Screenshot from 2025-09-19 11-28-12" src="https://github.com/user-attachments/assets/a6f861b3-99f3-428a-87d5-c0d033553ad6" />
