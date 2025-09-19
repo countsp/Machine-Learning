@@ -156,3 +156,12 @@ def _inner_forward(x):
 ```
 **输出：**
 [12, C’, 200, 200]
+
+# BBox Head
+三个头分别预测
+
+cls_scores: [B, 200\*200\*8, num_classes]
+
+bbox_preds: [B, 200\*200\*8, 9] (Δx, Δy, Δz, Δw, Δl, Δh, Δyaw, Δvx, Δvy)
+
+dir_cls_preds: [B, 200\*200\*8, 2]
