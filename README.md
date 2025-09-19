@@ -288,6 +288,19 @@ encoder通过self-attention和ffd直接输出一个vector seq为m1,然后m1和�
 # Loss
 分类 loss（交叉熵/Focal Loss）+ 回归 loss（L1/SmoothL1/GIoU/LossNormReg 等）。
 
+## 交叉熵
+<img width="794" height="748" alt="Screenshot from 2025-09-19 11-28-12" src="https://github.com/user-attachments/assets/a6f861b3-99f3-428a-87d5-c0d033553ad6" />
+
+## 回归loss
+
+### L1 Loss（又叫 MAE，Mean Absolute Error）
+<img width="859" height="522" alt="Screenshot from 2025-09-19 10-38-46" src="https://github.com/user-attachments/assets/de38dc43-cdcd-427b-9dac-f02956325284" />
+
+
+### Smooth L1 Loss
+<img width="870" height="390" alt="Screenshot from 2025-09-19 10-39-08" src="https://github.com/user-attachments/assets/b292d0c1-9fbb-43f8-8df4-b4e3054b6958" />
+
+
 ### 检测BBOX的loss：bag-level
 <img width="718" height="770" alt="Screenshot from 2025-09-18 14-04-46" src="https://github.com/user-attachments/assets/cb9397a0-4a59-40c5-b3a0-a2bff8dab008" />
 <img width="630" height="861" alt="Screenshot from 2025-09-18 14-45-30" src="https://github.com/user-attachments/assets/29f31940-322e-4e3d-b041-d3b7b4647912" />
