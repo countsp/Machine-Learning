@@ -270,6 +270,61 @@ $$
 running-mean_t​=(1−m)⋅running-mean_t−1​+m⋅μbatch​
 $$
 
+1. Batch Normalization (BN)
+
+公式：对 一个 batch 内 同一通道 的所有样本做均值/方差归一化。
+
+统计范围：(N, H, W)，对通道维 C 单独做。常用在 CNN。BN：算 C 次（每个通道一次，跨 batch 求统计量）。
+
+
+
+2. Layer Normalization (LN)
+
+公式：对 每个样本的最后一维（embedding 维度） 归一化。常用在 Transformer。LN：算 B 次（每个样本一次，跨通道和空间求统计量）
+
+📘 举例：
+
+输入 shape = [batch=2, num_query=4, embed_dims=3]
+
+对每个向量 [x1, x2, x3] 计算均值/方差，归一化。
+
+👉 每个 query 单独归一化，互不影响。
+
+🔹 3. Instance Normalization (IN)
+
+公式：对 每个样本、每个通道，跨空间位置归一化。
+
+统计范围：(H, W)，不跨 batch。
+
+常用在风格迁移、图像生成。
+
+📘 举例：
+
+输入 shape = [N=2, C=3, H=2, W=2]
+
+对 样本1的通道1 的 [1,2,3,4] 单独求均值方差。
+
+👉 每个样本、每个通道独立。
+
+
+4. Group Normalization (GN)
+
+公式：把通道分组，每组内部做归一化。
+
+统计范围：(channels_per_group, H, W)
+
+常用在小 batch CNN 训练。
+
+📘 举例：
+
+输入 shape = [N=1, C=4, H=2, W=2]，设分 2 组：
+
+组1：通道0和1一起归一化
+
+组2：通道2和3一起归一化
+
+👉 不依赖 batch size，更稳定。
+
 # Transformer
 
 ![Screenshot from 2025-03-10 10-27-57](https://github.com/user-attachments/assets/ce0cc1b2-ced3-4eb5-bacd-6d5749bad9c4)
