@@ -63,9 +63,10 @@ Fₜ = {Fₜ¹, Fₜ², ..., Fₜ⁶}
   #### a. **Temporal Self-Attention（时间自注意力）**
 
   - 目标：融合 `Bₜ₋₁` 的时间信息
-  - 将 `Bₜ₋₁` 与当前 BEV Queries `Q` 对齐（使用 ego-motion），作为注意力键值对
+  - 将 `Bₜ₋₁` 与当前 BEV Queries `Q` 对齐（使用 ego-motion），作为注意力键值对，第一帧用自身。
   - 每个 BEV Query 从 `Bₜ₋₁` 中提取运动与历史线索
-
+    
+   'norm',  'norm', 
   #### b. **Spatial Cross-Attention（空间交叉注意力）**
 
   - 每个 BEV Query：
@@ -73,6 +74,10 @@ Fₜ = {Fₜ¹, Fₜ², ..., Fₜ⁶}
     - 利用相机投影矩阵将柱体投影到图像平面，得到多个 2D 参考点（reference points）
     - 使用 **Deformable Attention** 从命中的图像特征区域中采样
     - 汇总多个摄像头的信息
+    - 先维度拍平，每个相机的 2D 特征图被拉平成一组 token 序列 ：feat.shape = (2, 6, 256, 30, 40) -> feat.flatten(3) → (2, 6, 256, 1200)
+    （6 = 相机数 2 = batch 1200 = flatten 后的空间像素点 256 = 通道）
+    - 加相机/层级 embedding：cams_embeds告诉模型这是前视还是后视。 self.level_embeds：告诉模型这是 C4 还是 C5。
+    - C4 flatten → (6, 2, 1200, 256) C5 flatten → (6, 2, 300, 256)
 
   #### c. **Feed Forward + LayerNorm**
 
