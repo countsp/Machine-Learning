@@ -132,7 +132,7 @@ return bev_feature.squeeze(1), pred_depth
 
 # camera_encoder
 
-CamEncoder 用的是 stem + 前 4~5 个 stage 的 blocks，去掉 head。
+CamEncoder 用的是 EfficientNet（B0 或 B4）的stem + 剪掉无用的高层 block 和分类 head ，只保留前 4~5 个 stage 的 blocks，去掉 head。
 
 ```
 CamEncoder(
@@ -163,12 +163,6 @@ CamEncoder(
 ```
 
 
-
-**主干网络 (Backbone)**
-
-使用 EfficientNet（B0 或 B4）。
-
-通过 delete_unused_layers 裁剪掉无用的高层 block 和分类 head，只保留前 4~5 个 stage，用作特征提取。
 
 对比efficientnet的原始结构，CamEncoder用了Stage1-5
 
