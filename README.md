@@ -361,4 +361,6 @@ encoder通过self-attention和ffd直接输出一个vector seq为m1,然后m1和�
 <img width="630" height="861" alt="Screenshot from 2025-09-18 14-45-30" src="https://github.com/user-attachments/assets/29f31940-322e-4e3d-b041-d3b7b4647912" />
 
 # 参数量
+
+transformer_decoder部分
 <img width="631" height="798" alt="Screenshot from 2025-09-22 14-25-06" src="https://github.com/user-attachments/assets/90a20fa2-cbf2-401d-804c-21176aa060ed" />
