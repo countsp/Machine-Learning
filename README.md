@@ -163,19 +163,13 @@ Resnet和Transformer都用了warm up 学习率策略
 ---
 
 # 分类任务
-# Sigmoid
+### Sigmoid
 
 是一种广泛用于二分类问题的统计方法。
 
 与线性回归不同，逻辑回归的输出是一个概率值，表示样本属于某个类别的概率。
 
 其核心思想是通过一个 Sigmoid 函数 将线性回归的结果映射到 [0, 1] 之间，以此实现分类任务。
-
-**线性部分**：
-  
-$z = w_0 + w_1 x_1 + w_2 x_2 + \cdots + w_n x_n = \mathbf{w}^T \mathbf{x}$
-
-其中x1,x2等为原始数据经过预处理后的特征值。
 
 **Sigmoid 映射：**
 
@@ -187,7 +181,9 @@ $\sigma(z) = \frac{1}{1 + e^{-z}}$
 
 若 $\sigma(z) \leq 0.5$，预测为 负类 (0)
 
-# softmax
+### softmax
+
+<img width="420" height="76" alt="Screenshot from 2025-09-22 14-39-44" src="https://github.com/user-attachments/assets/be00bafb-a684-4a3c-a55f-39cfe23a6ee5" />
 
 1.归一化
 
