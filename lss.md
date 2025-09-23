@@ -66,6 +66,8 @@
 - **无需激光雷达**：完全基于 RGB 图像学习语义和几何；
 - **鲁棒性强**：支持摄像头缺失和外参扰动的鲁棒训练；
 - **可零样本泛化到新摄像头布局**（zero-shot camera rig transfer）。
+  
+---
 
 # ParkingE2E 对应代码
 
@@ -103,6 +105,32 @@ frustum.shape = (48, 32, 32, 3)储存 32*32个像素 + 48个深度 bin 对应的
 ```
 self.cam_encoder = CamEncoder(self.cfg, self.depth_channel)
 ```
+**4.特征与深度分布外积**
+
+```
+def encoder_forward(self, images):
+        b, n, c, h, w = images.shape # Batch 大小 × 摄像头数量 × 通道数 × 高 × 宽
+        images = images.view(b * n, c, h, w)
+        x, depth = self.cam_encoder(images)  # 计算出 depth
+
+        depth_prob = None
+        if self.cfg.use_depth_distribution:
+            depth_prob = depth.softmax(dim=1)
+            x = depth_prob.unsqueeze(1) * x.unsqueeze(2)
+        else:
+            x = x.unsqueeze(2).repeat(1, 1, self.depth_channel, 1, 1)
+
+```
+Step 1: 维度扩展
+
+depth_prob (深度分布): [B*N, D, H', W']（D = 深度切片数，比如 36）-> depth_prob.unsqueeze(1) → [B*N, 1, D, H', W']
+
+x (image feature): [B*N, C, H', W']（这里 C = 图像语义特征通道数，H'/W' 是下采样后的大小，比如 32×32）-> x.unsqueeze(2) → [B*N, C, 1, H', W']
+
+Step 2: 相乘
+
+二者相乘时，广播规则会把这两个张量扩展成：[B∗N,C,D,H′,W′]
+
 
 **4.几何投影到世界坐标**
 
