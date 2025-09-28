@@ -150,7 +150,7 @@ Decoder outputs hs ➝ class_embed + bbox_embed
 
 ---
 
-#### ✅ Step 1: 分类代价cost_class  `cost_class = 1 - p(GT类)`
+#### ✅ Step 1: 找出所有GT的类别，计算 分类代价 cost_class  `cost_class = 1 - p(GT类)`
 
 | 预测\GT | G0 (B类)       | G1 (A类)       |
 |---------|----------------|----------------|
