@@ -1,5 +1,6 @@
 # RT-detr
 
+<img width="1828" height="445" alt="Screenshot from 2025-11-18 14-59-46" src="https://github.com/user-attachments/assets/dd28d1e2-f54d-4912-9730-f4b33047f367" />
 
 A： 直接concat
 
