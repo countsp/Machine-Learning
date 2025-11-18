@@ -1,5 +1,47 @@
 # RT-detr
 
+
+A： 直接concat
+
+B： S3 S4 S5 分别做self-attention后concat
+
+C： S3 S4 S5 先concat 融合后做self-attention
+
+D： S3 S4 S5 分别做self-attention 后 PANet-style特征金字塔融合 
+
+E: S3 S4 S5 分别做一层Layer的Self-attention，然后做
+
+
+### PAN融合
+```
+def Variant_D_CSF(S3_enhanced, S4_enhanced, S5_enhanced):
+    """
+    输入：经过SSE尺度内交互增强后的特征{S3, S4, S5}
+    CSF采用类似PANet的自上而下+自下而上融合路径
+    """
+    
+    # 1. 自上而下路径（Top-down）
+    P5 = Conv1x1(S5_enhanced)  # 高层特征调整
+    P4 = Upsample(P5) + Conv1x1(S4_enhanced)  # 上采样融合
+    P3 = Upsample(P4) + Conv1x1(S3_enhanced)  # 上采样融合
+    
+    # 2. 自下而上路径（Bottom-up）  
+    N3 = Conv3x3(P3)
+    N4 = Conv3x3(Downsample(N3) + P4)  # 下采样融合
+    N5 = Conv3x3(Downsample(N4) + P5)  # 下采样融合
+    
+    return [N3, N4, N5]  # 融合后的多尺度特征
+```
+
+### AIFI: 单层Self-Attention
+```
+S5_flattened = Flatten(S5)  # 序列化高层特征
+    S5_attended = SingleLayerSelfAttention(S5_flattened)  # 单层Transformer
+    F5 = Reshape(S5_attended)  # 恢复特征图形状
+```
+
+### CCFF:
+
 提出观点：
 
 **直接拼接后做交互是冗余的**
